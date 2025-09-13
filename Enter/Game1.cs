@@ -18,6 +18,12 @@ public class Game1 : Core
     private Vector2 _marioPosition;
     private const float MOVEMENT_SPEED = 5.0f;
 
+    // text font
+    private SpriteFont _font1;
+
+    // graphics device manager
+    private GraphicsDeviceManager _graphics;
+
     public Game1() : base("Sprint 0", 1280, 720, false)
     {
 
@@ -66,8 +72,6 @@ public class Game1 : Core
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        // TODO: Add your drawing code here
-
         // Begin the sprite batch to prepare for rendering.
         SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
@@ -76,6 +80,13 @@ public class Game1 : Core
 
         // Draw Mario Running
         _mario_running.Draw(SpriteBatch, _marioPosition);
+
+        _font1 = Content.Load<SpriteFont>("MyMenuFont");
+        Viewport viewport = _graphics.GraphicsDevice.Viewport;
+
+        // Draw the text sprite
+        TextSprite textSprite = new TextSprite("Hello, MonoGame!", _font1, Color.White);
+        textSprite.Draw(SpriteBatch, new Vector2(viewport.Width / 2, viewport.Height / 2));
 
         // Always end the sprite batch when finished.
         SpriteBatch.End();
