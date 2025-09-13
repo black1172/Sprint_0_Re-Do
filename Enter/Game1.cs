@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGameLibrary;
 using MonoGameLibrary.Graphics;
+using KeyboardController;
+using MouseController;
 
 namespace Sprint0;
 
@@ -51,11 +53,11 @@ public class Game1 : Core
         // update the animated sprite
         _mario_running.Update(gameTime);
 
-        // check for keyboard input
-        CheckKeyboardInput();
+        // TODO: Check for keyboard input
+        
 
-        // check for mouse input
-        CheckMouseInput();
+        // TODO: Check for mouse input
+        
 
         base.Update(gameTime);
     }
@@ -79,54 +81,5 @@ public class Game1 : Core
         SpriteBatch.End();
 
         base.Draw(gameTime);
-    }
-
-    private void CheckKeyboardInput()
-    {
-        // Get the state of keyboard input
-        KeyboardState keyboardState = Keyboard.GetState();
-
-        // If the space key is held down, the movement speed increases by 1.5
-        float speed = MOVEMENT_SPEED;
-        if (keyboardState.IsKeyDown(Keys.Space))
-        {
-            speed *= 1.5f;
-        }
-
-        // If the W or Up keys are down, move the slime up on the screen.
-        if (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up))
-        {
-            _marioPosition.Y -= speed;
-        }
-
-        // if the S or Down keys are down, move the slime down on the screen.
-        if (keyboardState.IsKeyDown(Keys.S) || keyboardState.IsKeyDown(Keys.Down))
-        {
-            _marioPosition.Y += speed;
-        }
-
-        // If the A or Left keys are down, move the slime left on the screen.
-        if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
-        {
-            _marioPosition.X -= speed;
-        }
-
-        // If the D or Right keys are down, move the slime right on the screen.
-        if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
-        {
-            _marioPosition.X += speed;
-        }
-    }
-    
-    private void CheckMouseInput()
-    {
-        // Get the state of mouse input
-        MouseState mouseState = Mouse.GetState();
-
-        // If the left mouse button is pressed, move Mario to the mouse position
-        if (mouseState.LeftButton == ButtonState.Pressed)
-        {
-            _marioPosition = new Vector2(mouseState.X, mouseState.Y);
-        }
-    }       
+    }     
 }

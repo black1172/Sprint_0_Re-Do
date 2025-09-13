@@ -8,18 +8,39 @@ using Microsoft.Xna.Framework.Input;
 
 namespace KeyboardController
 {
-    public class KeyboardController : IController
+    public class KeyboardController
     {
-        public void Update(Game1 game, IPlayer player)
+        public void Update(Game1 game)
         {
             // Get the current state of keyboard input.
             KeyboardState keyboardState = Keyboard.GetState();
 
-            // Check if the space key is down.
-            if (keyboardState.IsKeyDown(Keys.Space))
+            if (keyboardState.IsKeyDown(Keys.NumPad0) || keyboardState.IsKeyDown(Keys.D0))
             {
-                // The space key is down, so do something.
+                // add code here to quit the game
             }
+
+            if (keyboardState.IsKeyDown(Keys.NumPad1) || keyboardState.IsKeyDown(Keys.D1))
+            {
+                // add code to draw standing mario
+            }
+
+
+            if (keyboardState.IsKeyDown(Keys.NumPad2) || keyboardState.IsKeyDown(Keys.Down))
+            {
+                // add code to draw running mario
+            }
+
+            if (keyboardState.IsKeyDown(Keys.NumPad3) || keyboardState.IsKeyDown(Keys.D3))
+            {
+                // add code to draw standing mario moving up and down
+            }
+
+            if (keyboardState.IsKeyDown(Keys.NumPad4) || keyboardState.IsKeyDown(Keys.Left))
+            {
+                // add code to move mario left and right while running
+            }
+        
         }
     }
 }

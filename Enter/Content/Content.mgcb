@@ -13,6 +13,13 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin images/File.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:images/File.spritefont;images/MyMenuFont.spritefont
+
 #begin images/File.xml
 /copy:images/File.xml;images/atlas-definition.xml
 
