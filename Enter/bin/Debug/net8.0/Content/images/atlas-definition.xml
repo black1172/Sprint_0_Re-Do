@@ -2,7 +2,16 @@
 <TextureAtlas>
     <Texture>images/mario_sheet</Texture>
     <Regions>
-        <Region name="mario_standing" x="0" y="8" width="16" height="16" />
-        <Region name="mario_running" x="20" y="8" width="16" height="16" />
+        <Region name="smallmario-standing" x="0" y="8" width="16" height="16" />
+        <Region name="smallmario-run-1" x="20" y="8" width="16" height="16" />
+        <Region name="smallmario-run-2" x="38" y="8" width="16" height="16" />
+        <Region name="smallmario-run-3" x="56" y="8" width="16" height="16" />
     </Regions>
+    <Animations>
+        <Animation name="small-mario-run" delay="200">
+            <Frame region="smallmario-run-1" />
+            <Frame region="smallmario-run-2" />
+            <Frame region="smallmario-run-3" />
+        </Animation>
+    </Animations>
 </TextureAtlas>
