@@ -4,9 +4,11 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/jenin/OneDrive/Documents/GitHub/Sprint_0_Re-Do/Enter/Content/images/File.spritefont</File>
     <File>C:/Users/jenin/OneDrive/Documents/GitHub/Sprint_0_Re-Do/Enter/Content/images/mario_sheet.png</File>
   </SourceFiles>
   <DestFiles>
+    <File>images/MyMenuFont.spritefont</File>
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

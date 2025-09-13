@@ -18,27 +18,34 @@ namespace MouseController
             // Get location of click
             Point mousePosition = new Point(mouseState.X, mouseState.Y);
 
-            // Check if the left mouse button is pressed down.
+            // Only respond to left mouse button pressed
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
-                // same as num pad 1
-            }
+                int width = 1280; // or get from game if dynamic
+                int height = 720;
+                int halfWidth = width / 2;
+                int halfHeight = height / 2;
 
-            if (mouseState.RightButton == ButtonState.Pressed)
-            {
-                // same as num pad 2
-            }
-
-            // Code if clicked in bottom left corner of window (1280x720)
-            if ((mouseState.LeftButton == ButtonState.Pressed) && (mousePosition.X < 640 && mousePosition.Y > 360))
-            {
-                // same as num pad 3
-            }
-
-            // Code if clicked in bottom right corner of window (1280x720)
-            if ((mouseState.RightButton == ButtonState.Pressed) && (mousePosition.X > 640 && mousePosition.Y > 360))
-            {
-                // same as num pad 4
+                if (mousePosition.X < halfWidth && mousePosition.Y < halfHeight)
+                {
+                    // Top left quarter: standing, fixed position
+                    game._currentMarioState = Game1.MarioState.Standing;
+                }
+                else if (mousePosition.X >= halfWidth && mousePosition.Y < halfHeight)
+                {
+                    // Top right quarter: running, fixed position
+                    game._currentMarioState = Game1.MarioState.Running;
+                }
+                else if (mousePosition.X < halfWidth && mousePosition.Y >= halfHeight)
+                {
+                    // Bottom left quarter: standing, moves up/down
+                    game._currentMarioState = Game1.MarioState.StandingUpDown;
+                }
+                else if (mousePosition.X >= halfWidth && mousePosition.Y >= halfHeight)
+                {
+                    // Bottom right quarter: running, moves left/right
+                    game._currentMarioState = Game1.MarioState.RunningLeftRight;
+                }
             }
         }
     }

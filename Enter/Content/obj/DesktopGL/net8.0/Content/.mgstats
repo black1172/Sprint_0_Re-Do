@@ -1,3 +1,4 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/jenin/OneDrive/Documents/GitHub/Sprint_0_Re-Do/Enter/Content/images/File.spritefont","C:/Users/jenin/OneDrive/Documents/GitHub/Sprint_0_Re-Do/Enter/Content/bin/DesktopGL/Content/images/MyMenuFont.xnb","FontDescriptionProcessor","SpriteFontContent",2068,37913,0.2079714
 "C:/Users/jenin/OneDrive/Documents/GitHub/Sprint_0_Re-Do/Enter/Content/images/File.xml","C:\Users\jenin\OneDrive\Documents\GitHub\Sprint_0_Re-Do\Enter\Content\bin\DesktopGL\Content\images/atlas-definition.xml","CopyItem","File",734,734,0.0020441
 "C:/Users/jenin/OneDrive/Documents/GitHub/Sprint_0_Re-Do/Enter/Content/images/mario_sheet.png","C:/Users/jenin/OneDrive/Documents/GitHub/Sprint_0_Re-Do/Enter/Content/bin/DesktopGL/Content/images/mario_sheet.xnb","TextureProcessor","Texture2DContent",50319,1018581,0.1626577

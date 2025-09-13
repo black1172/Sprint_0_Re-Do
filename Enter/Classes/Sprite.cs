@@ -5,6 +5,7 @@ namespace MonoGameLibrary.Graphics;
 
 public class Sprite
 {
+    
     /// <summary>
     /// Gets or Sets the source texture region represented by this sprite.
     /// </summary>

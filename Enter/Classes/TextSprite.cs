@@ -18,4 +18,9 @@ public class TextSprite : Sprite
         _color = color;
         _textSize = _font.MeasureString(_text);
     }
+
+    public void Draw(SpriteBatch spriteBatch, Vector2 position)
+    {
+        spriteBatch.DrawString(_font, _text, position, _color);
+    }
 }

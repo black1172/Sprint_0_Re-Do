@@ -32,3 +32,4 @@ C:\Users\jenin\OneDrive\Documents\GitHub\Sprint_0_Re-Do\Enter\obj\Debug\net8.0\E
 C:\Users\jenin\OneDrive\Documents\GitHub\Sprint_0_Re-Do\Enter\obj\Debug\net8.0\ref\Enter.dll
 C:\Users\jenin\OneDrive\Documents\GitHub\Sprint_0_Re-Do\Enter\bin\Debug\net8.0\Content\images\mario_sheet.xnb
 C:\Users\jenin\OneDrive\Documents\GitHub\Sprint_0_Re-Do\Enter\bin\Debug\net8.0\Content\images\atlas-definition.xml
+C:\Users\jenin\OneDrive\Documents\GitHub\Sprint_0_Re-Do\Enter\bin\Debug\net8.0\Content\images\MyMenuFont.xnb
