@@ -8,9 +8,9 @@ namespace Sprint0;
 
 public class Game1 : Core
 {
-    // texture region that defines the mario sprites in the atlas.
-    private TextureRegion _mario_standing;
-    private TextureRegion _mario_running;
+    // define sprites
+    private Sprite _mario_standing;
+    private Sprite _mario_running;
 
     public Game1() : base("Sprint 0", 1280, 720, false)
     {
@@ -31,10 +31,12 @@ public class Game1 : Core
         TextureAtlas atlas = TextureAtlas.FromFile(Content, "images/atlas-definition.xml");
 
         // retrieve the mario_standing region from the atlas.
-        _mario_standing = atlas.GetRegion("mario_standing");
+        _mario_standing = atlas.CreateSprite("mario_standing");
+        _mario_standing.Scale = new Vector2(4.0f, 4.0f);
 
         // retrieve the mario_running region from the atlas.
-        _mario_running = atlas.GetRegion("mario_running");
+        _mario_running = atlas.CreateSprite("mario_running");
+        _mario_running.Scale = new Vector2(4.0f, 4.0f);
     }
 
     protected override void Update(GameTime gameTime)
@@ -56,11 +58,11 @@ public class Game1 : Core
         // Begin the sprite batch to prepare for rendering.
         SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
-        // Draw the mario standing texture region 10px to the right of the mario running at a scale of 4.0
-        _mario_standing.Draw(SpriteBatch, Vector2.Zero, Color.White, 0.0f, Vector2.One, 4.0f, SpriteEffects.None, 1.0f);
+        // Draw Mario Standing
+        _mario_standing.Draw(SpriteBatch, Vector2.One); 
 
-        // Draw the mario running texture region at a scale of 4.0
-        _mario_running.Draw(SpriteBatch, new Vector2(_mario_standing.Width * 4.0f + 10, 0), Color.White, 0.0f, Vector2.One, 4.0f, SpriteEffects.None, 0.0f);
+        // Draw Mario Running
+        _mario_running.Draw(SpriteBatch, new Vector2(_mario_standing.Width + 10, 0));
 
         // Always end the sprite batch when finished.
         SpriteBatch.End();
