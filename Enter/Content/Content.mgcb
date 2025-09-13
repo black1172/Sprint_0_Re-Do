@@ -13,6 +13,9 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin images/File.xml
+/copy:images/File.xml;images/atlas-definition.xml
+
 #begin images/mario_sheet.png
 /importer:TextureImporter
 /processor:TextureProcessor

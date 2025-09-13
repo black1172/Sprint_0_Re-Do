@@ -27,17 +27,8 @@ public class Game1 : Core
     protected override void LoadContent()
     {
         
-        // Load the atlas texture using the content manager
-        Texture2D atlasTexture = Content.Load<Texture2D>("images/atlas");
-
-        //  Create a TextureAtlas instance from the atlas
-        TextureAtlas atlas = new TextureAtlas(atlasTexture);
-
-        // add the mario region to the atlas.
-        atlas.AddRegion("mario_standing", 0, 8, 16, 16);
-
-        // add the marios_running region to the atlas.
-        atlas.AddRegion("mario_running", 20, 8, 52, 16);
+        // Create the texture atlas from the XML configuration file
+        TextureAtlas atlas = TextureAtlas.FromFile(Content, "images/atlas-definition.xml");
 
         // retrieve the mario_standing region from the atlas.
         _mario_standing = atlas.GetRegion("mario_standing");
@@ -61,20 +52,15 @@ public class Game1 : Core
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
         // TODO: Add your drawing code here
-        // Begin the sprite batch to prepare for rendering.
-        SpriteBatch.Begin();
 
         // Begin the sprite batch to prepare for rendering.
         SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
-        // Draw the mario running texture region at a scale of 4.0
-        _mario_running.Draw(SpriteBatch, Vector2.Zero, Color.White, 0.0f, Vector2.One, 4.0f, SpriteEffects.None, 0.0f);
-
         // Draw the mario standing texture region 10px to the right of the mario running at a scale of 4.0
-        _mario_standing.Draw(SpriteBatch, new Vector2(_mario_standing.Width * 4.0f + 10, 0), Color.White, 0.0f, Vector2.One, 4.0f, SpriteEffects.None, 1.0f);
+        _mario_standing.Draw(SpriteBatch, Vector2.Zero, Color.White, 0.0f, Vector2.One, 4.0f, SpriteEffects.None, 1.0f);
 
-        // Always end the sprite batch when finished.
-        SpriteBatch.End();
+        // Draw the mario running texture region at a scale of 4.0
+        _mario_running.Draw(SpriteBatch, new Vector2(_mario_standing.Width * 4.0f + 10, 0), Color.White, 0.0f, Vector2.One, 4.0f, SpriteEffects.None, 0.0f);
 
         // Always end the sprite batch when finished.
         SpriteBatch.End();
