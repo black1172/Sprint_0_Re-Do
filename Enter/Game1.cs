@@ -47,20 +47,49 @@ public class Game1 : Core
         // Begin the sprite batch to prepare for rendering.
         SpriteBatch.Begin();
 
-        // Draw the texture.
-        SpriteBatch.Draw(
-            _mario_sheet,              // texture
-            new Vector2(        // position
-                (Window.ClientBounds.Width * 0.5f) - (_mario_sheet.Width * 0.5f),
-                (Window.ClientBounds.Height * 0.5f) - (_mario_sheet.Height * 0.5f)),
-            null,               // sourceRectangle
-            Color.White,        // color
-            0.0f,               // rotation
-            Vector2.Zero,       // origin
-            1.0f,               // scale
-            SpriteEffects.None, // effects
-            0.0f                // layerDepth
-        );
+        // first mario texture is at (0, 8) and is 16x16
+        // second mario texture is at (21, 8) and is 16x16
+
+        // The bounds of the icon within the texture.
+        Rectangle standing_mario = new Rectangle(0, 8, 16, 16);
+
+        // The bounds of the word mark within the texture.
+        Rectangle first_step_mario = new Rectangle(21, 8, 16, 16);
+
+        // Draw only the icon portion of the texture.
+    SpriteBatch.Draw(
+        _mario_sheet,              // texture
+        new Vector2(        // position
+            Window.ClientBounds.Width,
+            Window.ClientBounds.Height) * 0.5f,
+        standing_mario,     // sourceRectangle
+        Color.White,        // color
+        0.0f,               // rotation
+        new Vector2(        // origin
+            standing_mario.Width,
+            standing_mario.Height) * 0.5f,
+        1.0f,               // scale
+        SpriteEffects.None, // effects
+        0.0f                // layerDepth
+    );
+
+    // Draw only the word mark portion of the texture.
+    SpriteBatch.Draw(
+        _mario_sheet,              // texture
+        new Vector2(        // position
+          Window.ClientBounds.Width,
+          Window.ClientBounds.Height) * 0.5f,
+        first_step_mario, // sourceRectangle
+        Color.White,        // color
+        0.0f,               // rotation
+        new Vector2(        // origin
+          first_step_mario.Width,
+          first_step_mario.Height) * 0.5f,
+        1.0f,               // scale
+        SpriteEffects.None, // effects
+        0.0f                // layerDepth
+    );
+
 
         // Always end the sprite batch when finished.
         SpriteBatch.End();
