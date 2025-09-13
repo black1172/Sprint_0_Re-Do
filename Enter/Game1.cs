@@ -7,6 +7,9 @@ namespace Sprint0;
 
 public class Game1 : Core
 {
+    // The Mario texture sheet
+    private Texture2D _mario_sheet;
+
     public Game1() : base("Sprint 0", 1280, 720, false)
     {
 
@@ -22,7 +25,7 @@ public class Game1 : Core
     protected override void LoadContent()
     {
         // TODO: use this.Content to load your game content here
-
+        _mario_sheet = Content.Load<Texture2D>("images/mario_sheet");
         base.LoadContent();
     }
 
@@ -41,6 +44,15 @@ public class Game1 : Core
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
         // TODO: Add your drawing code here
+        // Begin the sprite batch to prepare for rendering.
+        SpriteBatch.Begin();
+
+        // Draw the Mario texture
+        SpriteBatch.Draw(_mario_sheet, Vector2.Zero, Color.White);
+
+        // Always end the sprite batch when finished.
+        SpriteBatch.End();
+
 
         base.Draw(gameTime);
     }
