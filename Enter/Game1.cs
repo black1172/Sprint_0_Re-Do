@@ -47,8 +47,20 @@ public class Game1 : Core
         // Begin the sprite batch to prepare for rendering.
         SpriteBatch.Begin();
 
-        // Draw the Mario texture
-        SpriteBatch.Draw(_mario_sheet, Vector2.Zero, Color.White);
+        // Draw the texture.
+        SpriteBatch.Draw(
+            _mario_sheet,              // texture
+            new Vector2(        // position
+                (Window.ClientBounds.Width * 0.5f) - (_mario_sheet.Width * 0.5f),
+                (Window.ClientBounds.Height * 0.5f) - (_mario_sheet.Height * 0.5f)),
+            null,               // sourceRectangle
+            Color.White,        // color
+            0.0f,               // rotation
+            Vector2.Zero,       // origin
+            1.0f,               // scale
+            SpriteEffects.None, // effects
+            0.0f                // layerDepth
+        );
 
         // Always end the sprite batch when finished.
         SpriteBatch.End();
