@@ -10,7 +10,7 @@ public class Game1 : Core
 {
     // define sprites
     private Sprite _mario_standing;
-    private Sprite _mario_running;
+    private AnimatedSprite _mario_running;
 
     public Game1() : base("Sprint 0", 1280, 720, false)
     {
@@ -34,8 +34,8 @@ public class Game1 : Core
         _mario_standing = atlas.CreateSprite("mario_standing");
         _mario_standing.Scale = new Vector2(4.0f, 4.0f);
 
-        // retrieve the mario_running region from the atlas.
-        _mario_running = atlas.CreateSprite("mario_running");
+        // create the animated sprite for mario_running
+        _mario_running = atlas.CreateAnimatedSprite("mario_running");
         _mario_running.Scale = new Vector2(4.0f, 4.0f);
     }
 
@@ -45,6 +45,7 @@ public class Game1 : Core
             Exit();
 
         // TODO: Add your update logic here
+        _mario_running.Update(gameTime);
 
         base.Update(gameTime);
     }
