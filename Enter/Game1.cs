@@ -2,13 +2,15 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGameLibrary;
+using MonoGameLibrary.Graphics;
 
 namespace Sprint0;
 
 public class Game1 : Core
 {
-    // The Mario texture sheet
-    private Texture2D _mario_sheet;
+    // texture region that defines the mario sprites in the atlas.
+    private TextureRegion _mario_standing;
+    private TextureRegion _mario_running;
 
     public Game1() : base("Sprint 0", 1280, 720, false)
     {
@@ -24,9 +26,24 @@ public class Game1 : Core
 
     protected override void LoadContent()
     {
-        // TODO: use this.Content to load your game content here
-        _mario_sheet = Content.Load<Texture2D>("images/mario_sheet");
-        base.LoadContent();
+        
+        // Load the atlas texture using the content manager
+        Texture2D atlasTexture = Content.Load<Texture2D>("images/atlas");
+
+        //  Create a TextureAtlas instance from the atlas
+        TextureAtlas atlas = new TextureAtlas(atlasTexture);
+
+        // add the mario region to the atlas.
+        atlas.AddRegion("mario_standing", 0, 8, 16, 16);
+
+        // add the marios_running region to the atlas.
+        atlas.AddRegion("mario_running", 20, 8, 52, 16);
+
+        // retrieve the mario_standing region from the atlas.
+        _mario_standing = atlas.GetRegion("mario_standing");
+
+        // retrieve the mario_running region from the atlas.
+        _mario_running = atlas.GetRegion("mario_running");
     }
 
     protected override void Update(GameTime gameTime)
@@ -47,53 +64,20 @@ public class Game1 : Core
         // Begin the sprite batch to prepare for rendering.
         SpriteBatch.Begin();
 
-        // first mario texture is at (0, 8) and is 16x16
-        // second mario texture is at (21, 8) and is 16x16
+        // Begin the sprite batch to prepare for rendering.
+        SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
-        // The bounds of the icon within the texture.
-        Rectangle standing_mario = new Rectangle(0, 8, 16, 16);
+        // Draw the mario running texture region at a scale of 4.0
+        _mario_running.Draw(SpriteBatch, Vector2.Zero, Color.White, 0.0f, Vector2.One, 4.0f, SpriteEffects.None, 0.0f);
 
-        // The bounds of the word mark within the texture.
-        Rectangle first_step_mario = new Rectangle(21, 8, 16, 16);
-
-        // Draw only the icon portion of the texture.
-    SpriteBatch.Draw(
-        _mario_sheet,              // texture
-        new Vector2(        // position
-            Window.ClientBounds.Width,
-            Window.ClientBounds.Height) * 0.5f,
-        standing_mario,     // sourceRectangle
-        Color.White,        // color
-        0.0f,               // rotation
-        new Vector2(        // origin
-            standing_mario.Width,
-            standing_mario.Height) * 0.5f,
-        1.0f,               // scale
-        SpriteEffects.None, // effects
-        0.0f                // layerDepth
-    );
-
-    // Draw only the word mark portion of the texture.
-    SpriteBatch.Draw(
-        _mario_sheet,              // texture
-        new Vector2(        // position
-          Window.ClientBounds.Width,
-          Window.ClientBounds.Height) * 0.5f,
-        first_step_mario, // sourceRectangle
-        Color.White,        // color
-        0.0f,               // rotation
-        new Vector2(        // origin
-          first_step_mario.Width,
-          first_step_mario.Height) * 0.5f,
-        1.0f,               // scale
-        SpriteEffects.None, // effects
-        0.0f                // layerDepth
-    );
-
+        // Draw the mario standing texture region 10px to the right of the mario running at a scale of 4.0
+        _mario_standing.Draw(SpriteBatch, new Vector2(_mario_standing.Width * 4.0f + 10, 0), Color.White, 0.0f, Vector2.One, 4.0f, SpriteEffects.None, 1.0f);
 
         // Always end the sprite batch when finished.
         SpriteBatch.End();
 
+        // Always end the sprite batch when finished.
+        SpriteBatch.End();
 
         base.Draw(gameTime);
     }
